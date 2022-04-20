@@ -17,7 +17,7 @@ const CheckOut = () => {
   const cart = useSelector((state) => state.cart.cart);
 
   let totalPrice = 0;
-  const sum = (cart.length > 0 ? cart.map((item) => (totalPrice += item.price)) : 0);
+  const sum = (cart.length > 0 ? cart.map((item) => (totalPrice += (item.price * item.quantity))) : 0);
 
   const quantity = useSelector((state) => state.cart.cart.length);
 
@@ -38,7 +38,6 @@ const CheckOut = () => {
   const onChange = (e) => {
     setValue(e.target.value);
   };
-
   return (
     <div className="checkout">
       <div className="header-checkout">
@@ -87,12 +86,16 @@ const CheckOut = () => {
             dataSource={cart}
             renderItem={(item) => (
               <List.Item>
+                {/* {handleTotalPrice(item.price,item.quantity)} */}
                 <Typography.Text mark>{item.name}</Typography.Text>{" "}
+                <strong style={{display: 'block'}}>{item.quantity}</strong>
+                <p style={{display: 'block'}}>
                 {formatMoney(item.price + "") + " " + "VND"}
+                </p>
               </List.Item>
             )}
           />
-          <Typography.Text>Tổng tiền: {inputCode=="sale" && totalPrice >0 ? formatMoney((totalPrice - 50000) + ""):formatMoney(totalPrice + "")} VND</Typography.Text>
+          <Typography.Text>Tổng tiền: {inputCode=="sale" && totalPrice >0 ? formatMoney((totalPrice - 50000) + ""):formatMoney((totalPrice) + "")} VND</Typography.Text>
           <p>Nhập mã "sale" để giảm 50.0000 VND</p>
           <Row justify="between">
             <Col>
