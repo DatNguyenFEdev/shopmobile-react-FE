@@ -10,7 +10,7 @@ const CartReducer = (state = initialState, action) => {
       const newCart = state.cart;
       if (newCart.includes(action.payload)) {
         newCart.map((item) => {
-          if (item.id == action.payload.id) {
+          if (item.id === action.payload.id) {
             item.quantity += 1;
           }
         });
@@ -41,7 +41,7 @@ const CartReducer = (state = initialState, action) => {
       const newCart = [];
       let filter = [];
       state.cart.map((item) => {
-        if (item.id == action.payload.key) {
+        if (item.id === action.payload.key) {
           item.quantity -= 1;
         }
         newCart.push(item);
@@ -53,7 +53,7 @@ const CartReducer = (state = initialState, action) => {
       };
     }
     case DELETE_PRODUCT: {
-      const newCart = state.cart.filter((item) => item.id != action.payload.key);
+      const newCart = state.cart.filter((item) => item.id !== action.payload.key);
       return {
         ...state,
         cart: newCart,

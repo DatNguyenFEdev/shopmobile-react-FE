@@ -40,8 +40,8 @@ function Cart() {
       key: "action",
       render: (item) => (
         <Space size="middle">
-          <Button onClick={()=> {handleQuantityUp(item)}}>+</Button>
           <Button onClick={()=> {handleQuantityDown(item)}}>-</Button>
+          <Button onClick={()=> {handleQuantityUp(item)}}>+</Button>
           <a onClick={()=> handleDelete(item)}>Delete</a>
         </Space>
       ),

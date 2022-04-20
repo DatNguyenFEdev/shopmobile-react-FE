@@ -36,7 +36,6 @@ const CheckOut = () => {
   };
 
   const onChange = (e) => {
-    console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
 
@@ -93,7 +92,6 @@ const CheckOut = () => {
               </List.Item>
             )}
           />
-          {console.log(inputCode)}
           <Typography.Text>Tổng tiền: {inputCode=="sale" && totalPrice >0 ? formatMoney((totalPrice - 50000) + ""):formatMoney(totalPrice + "")} VND</Typography.Text>
           <p>Nhập mã "sale" để giảm 50.0000 VND</p>
           <Row justify="between">

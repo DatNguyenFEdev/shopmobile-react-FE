@@ -21,8 +21,9 @@ export const quantityDown = (payload) => {
         payload: payload
     }
 }
-export const removeProduct = () => {
+export const removeProduct = (payload) => {
     return {
         type: DELETE_PRODUCT,
+        payload: payload,
     }
 }
