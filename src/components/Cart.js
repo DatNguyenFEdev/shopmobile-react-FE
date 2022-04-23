@@ -63,12 +63,12 @@ function Cart() {
       <h1>Cart</h1>
       <Table columns={columns} dataSource={data}></Table>
       <Row justify="space-between">
-        <Col span={4}>
+        <Col span={12}>
           <button>
             <Link to="/shop">Tiếp tục mua hàng</Link>
           </button>
         </Col>
-        <Col span={3}>
+        <Col span={8} justify="space-end">
           <Button disabled={data[0]===undefined?true:false}>
             <Link to="/checkout">Đặt hàng</Link>
           </Button>

@@ -131,10 +131,7 @@ function Shop() {
 
   return (
     <div className="shop">
-      Rơ
       <Row>
-        <Col flex={4}>
-        </Col>
         <Col flex={20}>
           <Spin spinning={loading} indicator={<LoadingOutlined />} tip="Loading...">
             <h1>Shop</h1>

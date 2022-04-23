@@ -1,13 +1,18 @@
 import { Col, Menu, Row, Layout, Input } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCartOutlined, SearchOutlined, MenuOutlined} from "@ant-design/icons";
+import "./header.scss"
 
 const HeaderComp = (props) => {
   const { Header } = Layout;
+  const [isOpen,setOpen] = useState(false)
+  const toggleMenu = () => {
+    setOpen(!isOpen)
+  }
   return (
     <Header className="header">
-      <Row>
+      <Row className="nav">
         <Col lg={2} xs={12}>
         <Link to="/">
           <div className="logo" style={{ width: "50px", marginRight: "30px" }}>
@@ -19,7 +24,7 @@ const HeaderComp = (props) => {
           </div>
         </Link>
         </Col>
-        <Col flex="1 1 400px" lg={8} xs={0}>
+        <Col flex="1 1 400px" lg={10} xs={0}>
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
             <Menu.Item key="1">
               <Link to="/">Trang chủ</Link>
@@ -33,9 +38,12 @@ const HeaderComp = (props) => {
             <Menu.Item key="4">
               <Link to="/contact">Liên hệ</Link>
             </Menu.Item>
+            <Menu.Item key="5">
+              <Link to="/my-order">Đơn hàng của tôi</Link>
+            </Menu.Item>
           </Menu>
         </Col>
-        <Col lg={10} style={{margin:'0 auto'}} xs={0}>
+        <Col lg={8} style={{margin:'0 auto'}} xs={0}>
           <div style={{position:"relative"}}>
           <Input placeholder="Search " />
           <SearchOutlined style={{color: '#bbbbbb',position:"absolute", top:'40%',right:'10px',cursor:'pointer'}} />
@@ -51,7 +59,29 @@ const HeaderComp = (props) => {
             </span>
           </Link>
         </Col>
-        <Col lg={0} md={0} sm={0} xs={12}><MenuOutlined style={{ float: "right",paddingTop:'20px',color: "#f6ffed", fontSize: "150%" }}/></Col>
+        <Col lg={0} md={12} sm={12} xs={12}><MenuOutlined 
+        style={{ float: "right",paddingTop:'20px',color: "#f6ffed", fontSize: "150%" }}
+        onClick={()=> {toggleMenu()}}
+        /></Col>
+        {isOpen ? <Col span={24} className="menu_mobile">
+        <Menu theme="dark" defaultSelectedKeys={["1"]}>
+            <Menu.Item key="1" align="middle">
+              <Link to="/">Trang chủ</Link>
+            </Menu.Item>
+            <Menu.Item key="2" align="middle">
+              <Link to="/shop">Cửa hàng</Link>
+            </Menu.Item>
+            <Menu.Item key="3" align="middle">
+              <Link to="/cart">Giỏ hàng</Link>
+            </Menu.Item>
+            <Menu.Item key="4" align="middle">
+              <Link to="/contact">Liên hệ</Link>
+            </Menu.Item>
+            <Menu.Item key="5" align="middle">
+              <Link to="/my-order">Đơn hàng của tôi</Link>
+            </Menu.Item>
+          </Menu>
+        </Col>:''}
       </Row>
     </Header>
   );

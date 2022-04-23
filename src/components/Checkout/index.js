@@ -97,9 +97,9 @@ const CheckOut = () => {
         <p>
           <strong>Email:</strong> {inforClient.email}
         </p>
-        <Button>
+        {/* <Button>
           <Link to="/my-order">Xem chi tiết đơn hàng</Link>
-        </Button>
+        </Button> */}
         <Button>
           <Link to="/">Quay lại trang chủ</Link>
         </Button>

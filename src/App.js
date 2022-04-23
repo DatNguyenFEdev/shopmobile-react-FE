@@ -37,7 +37,6 @@ function App() {
         {/* <Layout> */}
           <HeaderComp quantity = {quantity} />
           <Layout>
-            <SideBar/>
             <Layout style={{ padding: "0 24px 24px" }}>
             <Content
               className="site-layout-background"

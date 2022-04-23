@@ -108,7 +108,7 @@ function DetailProduct() {
   return (
     <div className="detailProduct">
       <Row>
-        <Col flex="6" key={detailProduct.id}>
+        <Col md={24} xl={10} key={detailProduct.id} align="middle">
           <Image width={600} src={detailProduct.imgURL} />
           <Row>
             <Col>
@@ -120,7 +120,7 @@ function DetailProduct() {
             </Col>
           </Row>
         </Col>
-        <Col flex="6">
+        <Col md={24} xl={14}>
           <h1>{detailProduct.name}</h1>
           <p>{formatMoney(detailProduct.price + " ") + "VND"}</p>
           Quantity ({quantity})

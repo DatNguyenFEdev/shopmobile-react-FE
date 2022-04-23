@@ -12,7 +12,7 @@ import {
 
 const SideBar = () => {
   return (
-    <div className="side-bar">
+    // <div className="side-bar">
       <Sider width={200} className="site-layout-background">
         <Menu mode="inline" style={{ height: "100%", borderRight: 0 }}>
           <SubMenu key="sub1" icon={<UserOutlined />} title="Trang chủ">
@@ -44,7 +44,7 @@ const SideBar = () => {
           </SubMenu>
         </Menu>
       </Sider>
-    </div>
+    // </div>
   );
 };
 

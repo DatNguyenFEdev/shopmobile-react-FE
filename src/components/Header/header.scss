@@ -1,0 +1,11 @@
+.header {
+        position: relative;
+        .menu_mobile {
+            position: absolute;
+            left: 0;
+            right:0;
+            top: 100%;
+            height: auto;
+            z-index: 17 !important;
+        }
+}
