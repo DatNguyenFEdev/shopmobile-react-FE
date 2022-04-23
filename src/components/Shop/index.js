@@ -134,7 +134,6 @@ function Shop() {
       Rơ
       <Row>
         <Col flex={4}>
-          <SideBar />
         </Col>
         <Col flex={20}>
           <Spin spinning={loading} indicator={<LoadingOutlined />} tip="Loading...">
