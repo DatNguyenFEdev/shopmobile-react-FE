@@ -59,6 +59,7 @@ function Cart() {
 
   return (
     <>
+    {console.log(data[0])}
       <h1>Cart</h1>
       <Table columns={columns} dataSource={data}></Table>
       <Row justify="space-between">
@@ -68,9 +69,9 @@ function Cart() {
           </button>
         </Col>
         <Col span={3}>
-          <button>
-            <Link to="/checkout" >Đặt hàng</Link>
-          </button>
+          <Button disabled={data[0]===undefined?true:false}>
+            <Link to="/checkout">Đặt hàng</Link>
+          </Button>
         </Col>
       </Row>
     </>

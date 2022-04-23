@@ -8,6 +8,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 import "./shop.scss";
 import ItemCard from "../ItemCard";
 import { changeProductAction } from "../../actions/productActions.js";
+import SideBar from "../SideBar.js/index.js";
 
 function Shop() {
   const history = useHistory();
@@ -130,50 +131,58 @@ function Shop() {
 
   return (
     <div className="shop">
-      <Spin spinning={loading} indicator={<LoadingOutlined />} tip="Loading...">
-        <h1>Shop</h1>
-        <button style={setMargin}>
-          <Link to="/">Back to home</Link>
-        </button>
-        <div style={{display:'flex'}}>
-          <Input
-            placeholder="Tìm kiếm sản phẩm"
-            className="inputSearch"
-            value={keyword}
-            onChange={(e) => {
-              setKeyWord(e.target.value);
-            }}
-            onKeyDown={submitSearch}
-          />
-          <Button onClick={onSearch}>
-            Search
-          </Button>
-        </div>
-        <Select
-          defaultValue={listSort[0].value}
-          style={{ width: 120, margin: "12px 0" }}
-          onChange={handleSort}
-        >
-          {listSort.map((sort, index) => (
-            <Option key={index} value={sort.value}>
-              {sort.label}
-            </Option>
-          ))}
-        </Select>
-        <Row gutter={[32, 32]}>
-          {!loading ? dataRender.map((item, index) => <ItemCard item={item} index={index} />) : ""}
-        </Row>
-        <Row style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
-          <Pagination
-            defaultCurrent={1}
-            total={listProduct.length}
-            onChange={handleChangePage}
-            showTotal={(total) => <div>Total: {total} items</div>}
-          />
-        </Row>
-      </Spin>
+      Rơ
+      <Row>
+        <Col flex={4}>
+          <SideBar />
+        </Col>
+        <Col flex={20}>
+          <Spin spinning={loading} indicator={<LoadingOutlined />} tip="Loading...">
+            <h1>Shop</h1>
+            <button style={setMargin}>
+              <Link to="/">Back to home</Link>
+            </button>
+            <div style={{ display: "flex" }}>
+              <Input
+                placeholder="Tìm kiếm sản phẩm"
+                className="inputSearch"
+                value={keyword}
+                onChange={(e) => {
+                  setKeyWord(e.target.value);
+                }}
+                onKeyDown={submitSearch}
+              />
+              <Button onClick={onSearch}>Search</Button>
+            </div>
+            <Select
+              defaultValue={listSort[0].value}
+              style={{ width: 120, margin: "12px 0" }}
+              onChange={handleSort}
+            >
+              {listSort.map((sort, index) => (
+                <Option key={index} value={sort.value}>
+                  {sort.label}
+                </Option>
+              ))}
+            </Select>
+            <Row gutter={[32, 32]}>
+              {!loading
+                ? dataRender.map((item, index) => <ItemCard item={item} index={index} />)
+                : ""}
+            </Row>
+            <Row style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
+              <Pagination
+                defaultCurrent={1}
+                total={listProduct.length}
+                onChange={handleChangePage}
+                showTotal={(total) => <div>Total: {total} items</div>}
+              />
+            </Row>
+          </Spin>
+        </Col>
+      </Row>
     </div>
-  );  
+  );
 }
 
 export default Shop;

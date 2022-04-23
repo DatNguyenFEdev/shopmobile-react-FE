@@ -1,31 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Table, Tag, Space } from "antd";
+import { useSelector } from "react-redux";
 
 const MyOrder = () => {
+  const myOrder = useSelector((state)=> state.myOrder.myOrder[0])
+  console.log(myOrder);
   const columns = [
     {
-      title: "Mã đơn hàng",
+      title: "Tên khách hàng",
       dataIndex: "codeOder",
       key: "codeOder",
       render: (text) => <a>{text}</a>,
     },
     {
-      title: "Tên người nhận",
+      title: "Địa chỉ",
       dataIndex: "recipient",
       key: "recipient",
     },
     {
-      title: "Thời gian tạo",
+      title: "Số điện thoại",
       dataIndex: "createAt",
       key: "createAt",
     },
     {
-      title: "Tiền thanh toán",
+      title: "Email",
       key: "totalMoney",
       dataIndex: "totalMoney",
     },
     {
-      title: "Action",
+      title: "Xem chi tiết",
       key: "action",
       render: () => (
         <Space size="middle">
@@ -38,30 +41,16 @@ const MyOrder = () => {
   const [data, setData] = useState([
     {
       key: "1",
-      codeOder: "Điện thoại iPhone 12",
-      recipient: 'Nguyen Van A',
-      createAt: "10/12/2021",
-      totalMoney: 40000000,
-    },
-    {
-      key: "2",
-      codeOder: "Điện thoại iPhone 11",
-      recipient: 'Nguyen Van B',
-      createAt: "10/02/2022",
-      totalMoney: 50000000,
-    },
-    {
-      key: "3",
-      codeOder: "Điện thoại iPhone 13",
-      recipient: 'Nguyen Van C',
-      createAt: "10/03/2022",
-      totalMoney: 6500000,
-    },
+      codeOder: myOrder.name,
+      recipient: myOrder.address,
+      createAt: myOrder.phone,
+      totalMoney: myOrder.email,
+    }
   ]);
 
   return (
     <div>
-      <h1>Đơn hàng của bạn</h1>
+      <h1 style={{textAlign: 'center',margin: '20px 0'}}>Thông tin khách hàng đã đặt</h1>
       <Table columns={columns} dataSource={data} />
     </div>
   );
